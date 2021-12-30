@@ -18,6 +18,7 @@ data <- data %>%
     unite("Date.Time", Date:Time) %>%
     mutate(Date.Time = as.POSIXct(Date.Time, format = "%d/%m/%Y_%H:%M:%S"))
 
+png(filename = "plot3.png", width = 480, height = 480)
 plot(
     data$Date.Time,
     data$Sub_metering_1,
@@ -35,6 +36,6 @@ legend(
     "topright",
     names(data[, 6:8]),
     col = c("black", "red", "blue"),
-    text.width = strwidth("Sub_metering_3")[1] * 2,
     lty = 1
 )
+dev.off()

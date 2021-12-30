@@ -18,9 +18,11 @@ data <- data %>%
     unite("Date.Time", Date:Time) %>%
     mutate(Date.Time = as.POSIXct(Date.Time, format = "%d/%m/%Y_%H:%M:%S"))
 
+png(filename = "plot1.png", width = 480, height = 480)
 hist(
     data$Global_active_power,
     xlab = "Global Active Power (kilowatts)",
     col = "red",
     main = "Global Active Power"
 )
+dev.off()

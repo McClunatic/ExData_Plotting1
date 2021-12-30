@@ -18,10 +18,12 @@ data <- data %>%
     unite("Date.Time", Date:Time) %>%
     mutate(Date.Time = as.POSIXct(Date.Time, format = "%d/%m/%Y_%H:%M:%S"))
 
+png(filename = "plot2.png", width = 480, height = 480)
 plot(
     data$Date.Time,
     data$Global_active_power,
     type = "l",
     xlab = "",
-    ylab = "Global Active Power (kilowatts"
+    ylab = "Global Active Power (kilowatts)"
 )
+dev.off()

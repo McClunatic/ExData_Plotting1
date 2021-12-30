@@ -18,6 +18,7 @@ data <- data %>%
     unite("Date.Time", Date:Time) %>%
     mutate(Date.Time = as.POSIXct(Date.Time, format = "%d/%m/%Y_%H:%M:%S"))
 
+png(filename = "plot4.png", width = 480, height = 480)
 par(mfrow = c(2, 2))
 
 plot(
@@ -53,7 +54,6 @@ legend(
     "topright",
     names(data[, 6:8]),
     col = c("black", "red", "blue"),
-    text.width = strwidth("Sub_metering_3")[1] * 2,
     lty = 1,
     bty = "n"
 )
@@ -66,3 +66,4 @@ plot(
     ylab = "Global_reactive_power"
 )
 axis(2, at = seq(0.1, 0.5, 0.1))
+dev.off()
